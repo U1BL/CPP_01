@@ -5,8 +5,9 @@ int main() {
     PhoneBook PhoneBook;
     std::string command;
 
-    while (1) {
-        std::cout << "Enter a command: ";
+    while (1) 
+    {
+        std::cout << "Enter a command(ADD, SEARCH, EXIT): ";
         std::cin >> command;
         if (command == "EXIT")
             break;
@@ -14,7 +15,6 @@ int main() {
             PhoneBook.addContact();
         }
         else if (command == "SEARCH") {
-            std::cout << "Searching..." << std::endl;
             PhoneBook.printContacts();
         }
         else

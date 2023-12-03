@@ -7,6 +7,12 @@
 
 // class Contact 
 // {
+//      private:
+//     std::string name;
+//     std::string lastName;
+//     std::string nickname;
+//     std::string phoneNumber;
+//     std::string darkestSecret;
 //     public:
 //     // Constructor
 //     Contact();
@@ -14,11 +20,6 @@
 //     // Destructor
 //     ~Contact();
     
-//     std::string name;
-//     std::string lastName;
-//     std::string nickname;
-//     std::string phoneNumber;
-//     std::string darkestSecret;
     
 // };
 

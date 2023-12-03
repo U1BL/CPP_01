@@ -6,11 +6,10 @@
 
 Contact::Contact() 
 {
-    std::cout << "Contact created" << std::endl;
+    // std::cout << "Contact created" << std::endl;
 }
 
 Contact::~Contact()
 {
-    std::cout << "IM HERE" << std::endl;
-    std::cout << "Contact destroyed" << std::endl;
+    // std::cout << "Contact destroyed" << std::endl;
 }
