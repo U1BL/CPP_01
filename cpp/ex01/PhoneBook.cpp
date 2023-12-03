@@ -11,7 +11,8 @@ PhoneBook::PhoneBook()
 
 void PhoneBook::addContact()
 {
-    std::cout << "Adding contact..." << std::endl;
+    if (contactCount == 8)
+        std::cout << "PhoneBook is full" << std::endl;
     Contact contact;
     std::cout << "Enter first name: ";
     std::cin >> contact.name;
@@ -23,11 +24,11 @@ void PhoneBook::addContact()
     std::cin >> contact.phoneNumber;
     std::cout << "Enter darkest secret: ";
     std::cin >> contact.darkestSecret;
-    contacts[contactCount] = contact;
+    contacts[contactCount % 8] = contact;
     contactCount++;
 }
 
-void PhoneBook::printContacts() 
+void PhoneBook::searchContact() 
 {
     if (contactCount == 0)
     {
@@ -42,6 +43,21 @@ void PhoneBook::printContacts()
         std::cout << std::setw(10) << "Nickname" << std::endl;
         for (int i = 0; i < contactCount; i++)
         {
+            if (contacts[i].name.length() > 10)
+                {
+                    printContact(i);
+                    break;
+                }
+            else if (contacts[i].lastName.length() > 10)
+                {
+                    printContact(i);
+                    break;
+                }
+            else if (contacts[i].nickname.length() > 10)
+                {
+                    printContact(i);
+                    break;
+                }
             std::cout << std::setw(10) << i << "|";
             std::cout << std::setw(10) << contacts[i].name << "|";
             std::cout << std::setw(10) << contacts[i].lastName << "|";
@@ -53,10 +69,11 @@ void PhoneBook::printContacts()
     std::cout << "Enter index of the contact you want view: ";
     std::cin >> index;
 
-    if (index < 0 || index >= contactCount)
+    if (std::cin.fail() || index < 0 || index >= 9)
     {
-        std::cout << "Invalid index" << std::endl;
-        return;
+        std::cout << "Invalid index." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
     }
     else
     {
@@ -68,6 +85,29 @@ void PhoneBook::printContacts()
     }
 }
 
+void PhoneBook::printContact(int index)
+{
+    for (int i = index; i < contactCount; i++)
+    {
+        if (i == 8)
+            break;
+        std::cout << std::setw(10) << i << "|";
+        if (contacts[i].name.length() > 10)
+            std::cout << std::setw(10) << contacts[i].name.substr(0, 9) + "." << "|";
+        else
+            std::cout << std::setw(10) << contacts[i].name << "|";
+        
+        if (contacts[i].lastName.length() > 10)
+            std::cout << std::setw(10) << contacts[i].lastName.substr(0, 9) + "." << "|";
+        else
+            std::cout << std::setw(10) << contacts[i].lastName << "|";
+        
+        if (contacts[i].nickname.length() > 10)
+            std::cout << std::setw(10) << contacts[i].nickname.substr(0, 9) + "." << std::endl;
+        else
+            std::cout << std::setw(10) << contacts[i].nickname << std::endl;
+    }
+}
 
 PhoneBook::~PhoneBook() 
 {

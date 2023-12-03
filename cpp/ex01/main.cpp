@@ -15,7 +15,7 @@ int main() {
             PhoneBook.addContact();
         }
         else if (command == "SEARCH") {
-            PhoneBook.printContacts();
+            PhoneBook.searchContact();
         }
         else
             std::cout << "Invalid command" << std::endl;

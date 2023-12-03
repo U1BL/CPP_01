@@ -36,7 +36,8 @@ class PhoneBook
 
     // Function declarations
     void addContact();
-    void printContacts();
+    void searchContact();
+    void printContact(int index);
 };
 
 #endif // PHONEBOOK_HPP
