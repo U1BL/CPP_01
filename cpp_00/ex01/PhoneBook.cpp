@@ -12,9 +12,12 @@ PhoneBook::PhoneBook()
 void PhoneBook::addContact()
 {
     if (contactCount == 8)
+    {
         std::cout << "PhoneBook is full" << std::endl;
+        return;
+    }
     Contact contact;
-    std::cout << "Enter first name: ";
+    std::cout << "Enter first name:   or\n \"first name last name ....\"" << std::endl;
     std::cin >> contact.name;
     std::cout << "Enter last name: ";
     std::cin >> contact.lastName;
@@ -69,7 +72,7 @@ void PhoneBook::searchContact()
     std::cout << "Enter index of the contact you want view: ";
     std::cin >> index;
 
-    if (std::cin.fail() || index < 0 || index >= 9)
+    if (std::cin.fail() || index < 0 || index >= 9 || contactCount <= index)
     {
         std::cout << "Invalid index." << std::endl;
         std::cin.clear();
